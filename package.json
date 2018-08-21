@@ -1,10 +1,11 @@
 {
-  "name": "vue-up",
+  "name": "vue-over-body",
+  "version": "0.0.0",
   "description": "Create modals, sidebars, notifications, pop ups, dropdowns! CSS framework agnostic",
   "main": "src/index.vue",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcodpt/vue-up.git"
+    "url": "git+https://github.com/marcodpt/vue-over-body.git"
   },
   "keywords": [
     "vue",
@@ -18,9 +19,9 @@
   "author": "Marco Di Pillo Tomic",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marcodpt/vue-up/issues"
+    "url": "https://github.com/marcodpt/vue-over-body/issues"
   },
-  "homepage": "https://github.com/marcodpt/vue-up#readme",
+  "homepage": "https://github.com/marcodpt/vue-over-body#readme",
   "scripts": {
     "server": "http-server -a localhost -p 8080",
     "build": "browserify -e src/app.vue -o app.js"

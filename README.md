@@ -1,14 +1,14 @@
-# vue-up
+# vue-over-body
 Create modals, sidebars, notifications, pop ups! 
 CSS framework agnostic!
 
 ### Demo
-[Live Demo](http://marcodpt.github.io/vue-up)
+[Live Demo](http://marcodpt.github.io/vue-over-body)
 in this demo was used bulma css framework
 
 ### Install
 ```
-npm install --save vue-up
+npm install --save vue-over-body
 ```
 
 ### Contribute
