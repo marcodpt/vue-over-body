@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vue UP!</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"/>
+</head>
+<body>
+  <div id="app">
+    <section class="hero is-light">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Vue UP!
+          </h1>
+          <h2 class="subtitle">
+            Create modals, sidebars, notifications, pop ups, dropdowns!<br/>
+            CSS framework agnostic! No layout consideration!
+          </h2>
+          <button class="button is-info" @click="showModal">
+            Show Modal
+          </button>
+          <button class="button is-primary" @click="showSidebar">
+            Show Sidebar
+          </button>
+          <button class="button is-warning" @click="showNotification">
+            Show Notication
+          </button>
+        </div>
+      </div>
+    </section>
+    <vue-up v-bind="modal">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+        <button class="delete" @click="modal.open = 0"></button>
+      </header>
+      <section class="modal-card-body">
+        <p class="title">
+          “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+        </p>
+        <p class="subtitle">
+          Jeff Atwood
+        </p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Save changes</button>
+        <button class="button">Cancel</button>
+      </footer>
+    </vue-up>
+    <vue-up v-bind="sidebar">
+      <aside class="menu" style="margin:10px">
+        <p class="menu-label">
+          General
+        </p>
+        <ul class="menu-list">
+          <li><a>Dashboard</a></li>
+          <li><a>Customers</a></li>
+        </ul>
+        <p class="menu-label">
+          Administration
+        </p>
+        <ul class="menu-list">
+          <li><a>Team Settings</a></li>
+          <li>
+            <a class="is-active">Manage Your Team</a>
+            <ul>
+              <li><a>Members</a></li>
+              <li><a>Plugins</a></li>
+              <li><a>Add a member</a></li>
+            </ul>
+          </li>
+          <li><a>Invitations</a></li>
+          <li><a>Cloud Storage Environment Settings</a></li>
+          <li><a>Authentication</a></li>
+        </ul>
+        <p class="menu-label">
+          Transactions
+        </p>
+        <ul class="menu-list">
+          <li><a>Payments</a></li>
+          <li><a>Transfers</a></li>
+          <li><a>Balance</a></li>
+        </ul>
+      </aside>
+    </vue-up>
+    <vue-up v-bind="notification">
+      <div class="notification is-warning">
+        <button class="delete" @click="notification.open = 0"></button>
+        <p>A little alert message!</p> 
+        <p>For the users of your app!</p> 
+      </div>
+    </vue-up>
+  </div>
+  <script src="app.js"></script>
+
+  <style>
+    .sampleModal {
+      position:relative; 
+      top:200px;
+      margin:auto;
+    }
+
+    .sampleSide {
+      height: 100%;
+      width: 300px;
+      top: 0;
+      left: 0;
+      background-color:#f8f8f8;
+    }
+
+    .sampleNotification {
+      top: 50px;
+      right: 50px;
+      width: 300px;
+    }
+  </style>
+</body>
+</html>

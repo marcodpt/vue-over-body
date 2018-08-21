@@ -1,0 +1,48 @@
+{
+  "name": "vue-up",
+  "description": "Create modals, sidebars, notifications, pop ups, dropdowns! CSS framework agnostic",
+  "main": "src/index.vue",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcodpt/vue-up.git"
+  },
+  "keywords": [
+    "vue",
+    "modal",
+    "sidebar",
+    "notification",
+    "popup",
+    "dropdown",
+    "agnostic"
+  ],
+  "author": "Marco Di Pillo Tomic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcodpt/vue-up/issues"
+  },
+  "homepage": "https://github.com/marcodpt/vue-up#readme",
+  "scripts": {
+    "server": "http-server -a localhost -p 8080",
+    "build": "browserify -e src/app.vue -o app.js"
+  },
+  "dependencies": {},
+  "browserify": {
+    "transform": [
+      "vueify",
+      "babelify"
+    ]
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "babelify": "^8.0.0",
+    "browserify": "^15.2.0",
+    "http-server": "^0.11.1",
+    "vue": "^2.4.1",
+    "vueify": "^9.4.1"
+  }
+}
