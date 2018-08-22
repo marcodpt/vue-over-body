@@ -1,10 +1,10 @@
 <script type="text/babel">
   import Vue from '../node_modules/vue/dist/vue.js'
-  import up from './index.vue'
+  import el from './index.vue'
 
   new Vue({
     components: {
-      'vue-up': up
+      'vue-over-body': el
     },
     methods: {
       showSidebar: function () {

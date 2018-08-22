@@ -18474,7 +18474,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 new _vue2.default({
   components: {
-    'vue-up': _index2.default
+    'vue-over-body': _index2.default
   },
   methods: {
     showSidebar: function showSidebar() {
@@ -18516,9 +18516,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-91d70d8c", __vue__options__)
+    hotAPI.createRecord("data-v-579e625a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-91d70d8c", __vue__options__)
+    hotAPI.reload("data-v-579e625a", __vue__options__)
   }
 })()}
 },{"../node_modules/vue/dist/vue.js":4,"./index.vue":8,"vue":5,"vue-hot-reload-api":3}],8:[function(require,module,exports){
@@ -18575,9 +18575,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0d6fa9aa", __vue__options__)
+    hotAPI.createRecord("data-v-c207676a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-0d6fa9aa", __vue__options__)
+    hotAPI.reload("data-v-c207676a", __vue__options__)
   }
 })()}
 },{"vue":5,"vue-hot-reload-api":3,"vueify/lib/insert-css":6}]},{},[7]);
