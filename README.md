@@ -22,8 +22,7 @@ npm install --save vue-over-body
     },
     data: function () {
       return {
-        open: 1,
-        dialogClass: 'sampleNotification'
+        open: 1
       }
     }
   }).$mount('#app')
