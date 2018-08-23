@@ -1,13 +1,13 @@
 <script type="text/babel">
   import Vue from '../node_modules/vue/dist/vue.js'
-  import el from './index.vue'
+  import overBody from './index.vue'
   import VueGitHubCorners from 'vue-gh-corners'
 
   Vue.use(VueGitHubCorners)
 
   new Vue({
     components: {
-      'vue-over-body': el
+      'vue-over-body': overBody
     },
     methods: {
       showSidebar: function () {
