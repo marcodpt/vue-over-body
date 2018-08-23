@@ -1,6 +1,6 @@
 {
   "name": "vue-over-body",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Create modals, sidebars, notifications, pop ups with css transitions!",
   "main": "src/index.vue",
   "repository": {
