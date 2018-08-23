@@ -48,7 +48,7 @@ npm install --save vue-over-body
   }
 ```
 
-###Props
+### Props
  - open
    - type: Number
    - default: 0
