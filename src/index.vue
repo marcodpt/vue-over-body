@@ -6,30 +6,46 @@
         type: Number,
         default: 0
       },
-      dialogClass: {
+      transition: {
+        type: Number,
+        default: 0.3
+      },
+      before: {
+        type: String,
+        default: ''
+      },
+      after: {
         type: String,
         default: ''
       }
     },
     data: function () {
       return {
-        show: false
+        start: false,
+        finish: false
       }
     },
     mounted: function () {
-      this.build()
+      this.toogle(this.open)
     },
     watch: {
       open: function () {
-        this.build()
+        this.toogle(this.open)
       }
     },
     methods: {
       close: function () {
-        this.$data.show = false
+        this.toogle(false)
       },
-      build: function () {
-        this.$data.show = this.open ? true : false
+      toogle: function (open) {
+        var t = 50
+        if (open) {
+          this.$data.start = true
+          setTimeout(() => this.$data.finish = true, t)
+        } else {
+          this.$data.finish = false
+          setTimeout(() => this.$data.start = false, this.transition * 1000 + t)
+        }
       }
     }
   }
@@ -37,17 +53,27 @@
 
 <template>
   <div
-    class="over_body_mask"
+    v-if="start"
+    :class="['over_body_mask', finish ? 'over_body_mask_after' : '']"
     @click="close"
     :style="{
       'z-index': open,
-      'display': show ? 'block' : 'none'
+      '-webkit-transition': 'all ' + transition + 's',
+      '-moz-transition': 'all ' + transition + 's',
+      '-o-transition': 'all ' + transition + 's',
+      'transition': 'all ' + transition + 's'
     }"
   >
     <div
       @click.stop
-      :style="{'z-index': open + 1}"
-      :class="['over_body_dialog', dialogClass]"
+      :style="{
+        'z-index': open + 1,
+        '-webkit-transition': 'all ' + transition + 's',
+        '-moz-transition': 'all ' + transition + 's',
+        '-o-transition': 'all ' + transition + 's',
+        'transition': 'all ' + transition + 's'
+      }"
+      :class="['over_body_dialog', before, finish ? after : '']"
     >
       <slot></slot>
     </div>
@@ -61,6 +87,9 @@
     width:100%; 
     height:100%; 
     position:fixed; 
+  }
+
+  .over_body_mask_after {
     background-color:rgba(0, 0, 0, 0.5); 
   }
 

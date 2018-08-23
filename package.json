@@ -1,7 +1,7 @@
 {
   "name": "vue-over-body",
   "version": "0.0.0",
-  "description": "Create modals, sidebars, notifications, pop ups, dropdowns! CSS framework agnostic",
+  "description": "Create modals, sidebars, notifications, pop ups with css transitions!",
   "main": "src/index.vue",
   "repository": {
     "type": "git",
@@ -9,12 +9,12 @@
   },
   "keywords": [
     "vue",
+    "vuejs2",
     "modal",
     "sidebar",
     "notification",
-    "popup",
-    "dropdown",
-    "agnostic"
+    "css-transitions",
+    "component"
   ],
   "author": "Marco Di Pillo Tomic",
   "license": "MIT",

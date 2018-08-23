@@ -18909,33 +18909,24 @@ new _vue2.default({
   },
   methods: {
     showSidebar: function showSidebar() {
-      this.$data.sidebar.open = this.$data.index;
+      this.$data.sidebar = this.$data.index;
       this.$data.index += 2;
     },
     showModal: function showModal() {
-      this.$data.modal.open = this.$data.index;
+      this.$data.modal = this.$data.index;
       this.$data.index += 2;
     },
     showNotification: function showNotification() {
-      this.$data.notification.open = this.$data.index;
+      this.$data.notification = this.$data.index;
       this.$data.index += 2;
     }
   },
   data: function data() {
     return {
       index: 1,
-      modal: {
-        open: 0,
-        dialogClass: 'sampleModal modal-card'
-      },
-      sidebar: {
-        open: 0,
-        dialogClass: 'sampleSide'
-      },
-      notification: {
-        open: 0,
-        dialogClass: 'sampleNotification'
-      }
+      modal: 0,
+      sidebar: 0,
+      notification: 0
     };
   }
 }).$mount('#app');
@@ -18953,7 +18944,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"../node_modules/vue/dist/vue.js":5,"./index.vue":9,"vue":6,"vue-gh-corners":3,"vue-hot-reload-api":4}],9:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".over_body_mask {\n  top:0; \n  left:0; \n  width:100%; \n  height:100%; \n  position:fixed; \n  background-color:rgba(0, 0, 0, 0.5); \n}\n\n.over_body_dialog {\n  position:absolute; \n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".over_body_mask {\n  top:0; \n  left:0; \n  width:100%; \n  height:100%; \n  position:fixed; \n}\n\n.over_body_mask_after {\n  background-color:rgba(0, 0, 0, 0.5); \n}\n\n.over_body_dialog {\n  position:absolute; \n}")
 ;(function(){
 'use strict';
 
@@ -18964,30 +18955,52 @@ module.exports = {
       type: Number,
       default: 0
     },
-    dialogClass: {
+    transition: {
+      type: Number,
+      default: 0.3
+    },
+    before: {
+      type: String,
+      default: ''
+    },
+    after: {
       type: String,
       default: ''
     }
   },
   data: function data() {
     return {
-      show: false
+      start: false,
+      finish: false
     };
   },
   mounted: function mounted() {
-    this.build();
+    this.toogle(this.open);
   },
   watch: {
     open: function open() {
-      this.build();
+      this.toogle(this.open);
     }
   },
   methods: {
     close: function close() {
-      this.$data.show = false;
+      this.toogle(false);
     },
-    build: function build() {
-      this.$data.show = this.open ? true : false;
+    toogle: function toogle(open) {
+      var _this = this;
+
+      var t = 50;
+      if (open) {
+        this.$data.start = true;
+        setTimeout(function () {
+          return _this.$data.finish = true;
+        }, t);
+      } else {
+        this.$data.finish = false;
+        setTimeout(function () {
+          return _this.$data.start = false;
+        }, this.transition * 1000 + t);
+      }
     }
   }
 };
@@ -18995,10 +19008,19 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"over_body_mask",style:({
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.start)?_c('div',{class:['over_body_mask', _vm.finish ? 'over_body_mask_after' : ''],style:({
     'z-index': _vm.open,
-    'display': _vm.show ? 'block' : 'none'
-  }),on:{"click":_vm.close}},[_c('div',{class:['over_body_dialog', _vm.dialogClass],style:({'z-index': _vm.open + 1}),on:{"click":function($event){$event.stopPropagation();}}},[_vm._t("default")],2)])}
+    '-webkit-transition': 'all ' + _vm.transition + 's',
+    '-moz-transition': 'all ' + _vm.transition + 's',
+    '-o-transition': 'all ' + _vm.transition + 's',
+    'transition': 'all ' + _vm.transition + 's'
+  }),on:{"click":_vm.close}},[_c('div',{class:['over_body_dialog', _vm.before, _vm.finish ? _vm.after : ''],style:({
+      'z-index': _vm.open + 1,
+      '-webkit-transition': 'all ' + _vm.transition + 's',
+      '-moz-transition': 'all ' + _vm.transition + 's',
+      '-o-transition': 'all ' + _vm.transition + 's',
+      'transition': 'all ' + _vm.transition + 's'
+    }),on:{"click":function($event){$event.stopPropagation();}}},[_vm._t("default")],2)]):_vm._e()}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

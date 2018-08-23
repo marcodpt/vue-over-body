@@ -34,10 +34,10 @@
         </div>
       </div>
     </section>
-    <vue-over-body v-bind="modal">
+    <vue-over-body :open="modal" before="modalBefore modal-card" after="modalAfter">
       <header class="modal-card-head">
         <p class="modal-card-title">Modal title</p>
-        <button class="delete" @click="modal.open = 0"></button>
+        <button class="delete" @click="modal = 0"></button>
       </header>
       <section class="modal-card-body">
         <p class="title">
@@ -52,7 +52,7 @@
         <button class="button">Cancel</button>
       </footer>
     </vue-over-body>
-    <vue-over-body v-bind="sidebar">
+    <vue-over-body :open="sidebar" before="sideBefore" after="sideAfter">
       <aside class="menu" style="margin:10px">
         <p class="menu-label">
           General
@@ -88,9 +88,9 @@
         </ul>
       </aside>
     </vue-over-body>
-    <vue-over-body v-bind="notification">
+    <vue-over-body :open="notification" before="notificationBefore" after="notificationAfter">
       <div class="notification is-warning">
-        <button class="delete" @click="notification.open = 0"></button>
+        <button class="delete" @click="notification = 0"></button>
         <p>A little alert message!</p> 
         <p>For the users of your app!</p> 
       </div>
@@ -100,24 +100,36 @@
   <script src="app.js"></script>
 
   <style>
-    .sampleModal {
+    .modalBefore {
       position:relative; 
-      top:200px;
+      top:-300px;
       margin:auto;
     }
 
-    .sampleSide {
+    .modalAfter {
+      top:200px;
+    }
+
+    .sideBefore {
       height: 100%;
       width: 300px;
       top: 0;
-      left: 0;
+      left: -300px;
       background-color:#f8f8f8;
     }
 
-    .sampleNotification {
+    .sideAfter {
+      left: 0;
+    }
+
+    .notificationBefore {
       top: 50px;
-      right: 50px;
       width: 300px;
+      right: -300px;
+    }
+
+    .notificationAfter {
+      right: 50px;
     }
   </style>
 </body>

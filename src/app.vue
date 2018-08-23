@@ -11,33 +11,24 @@
     },
     methods: {
       showSidebar: function () {
-        this.$data.sidebar.open = this.$data.index
+        this.$data.sidebar = this.$data.index
         this.$data.index += 2
       },
       showModal: function () {
-        this.$data.modal.open = this.$data.index
+        this.$data.modal = this.$data.index
         this.$data.index += 2
       },
       showNotification: function () {
-        this.$data.notification.open = this.$data.index
+        this.$data.notification = this.$data.index
         this.$data.index += 2
       }
     },
     data: function () {
       return {
         index: 1,
-        modal: {
-          open: 0,
-          dialogClass: 'sampleModal modal-card'
-        },
-        sidebar: {
-          open: 0,
-          dialogClass: 'sampleSide'
-        },
-        notification: {
-          open: 0,
-          dialogClass: 'sampleNotification'
-        }
+        modal: 0,
+        sidebar: 0,
+        notification: 0
       }
     }
   }).$mount('#app')
