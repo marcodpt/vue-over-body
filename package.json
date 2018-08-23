@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/marcodpt/vue-over-body#readme",
   "scripts": {
-    "server": "http-server -a localhost -p 8080",
+    "cp_bulma": "cp node_modules/bulma/css/bulma.min.css static/",
+    "cp_ghcorners": "cp node_modules/vue-gh-corners/dist/vue-github-corners.min.css static/",
+    "server": "npm run cp_bulma && npm run cp_ghcorners && http-server -a localhost -p 8080",
     "build": "browserify -e src/app.vue -o app.js"
   },
   "dependencies": {},
@@ -42,8 +44,10 @@
     "babel-runtime": "^6.26.0",
     "babelify": "^8.0.0",
     "browserify": "^15.2.0",
+    "bulma": "^0.7.1",
     "http-server": "^0.11.1",
     "vue": "^2.4.1",
+    "vue-gh-corners": "^2.0.0",
     "vueify": "^9.4.1"
   }
 }

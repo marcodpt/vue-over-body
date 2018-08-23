@@ -1,6 +1,6 @@
 <script type="text/babel">
   module.exports = {
-    name: 'vue-up',
+    name: 'vue-over-body',
     props: {
       open: {
         type: Number,
@@ -37,7 +37,7 @@
 
 <template>
   <div
-    class="mask"
+    class="over_body_mask"
     @click="close"
     :style="{
       'z-index': open,
@@ -47,7 +47,7 @@
     <div
       @click.stop
       :style="{'z-index': open + 1}"
-      :class="['dialog', dialogClass]"
+      :class="['over_body_dialog', dialogClass]"
     >
       <slot></slot>
     </div>
@@ -55,7 +55,7 @@
 </template>
 
 <style>
-  .mask {
+  .over_body_mask {
     top:0; 
     left:0; 
     width:100%; 
@@ -64,7 +64,7 @@
     background-color:rgba(0, 0, 0, 0.5); 
   }
 
-  .dialog {
+  .over_body_dialog {
     position:absolute; 
   }
 </style>

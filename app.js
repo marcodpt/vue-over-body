@@ -264,6 +264,431 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
 };
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
 },{"process/browser.js":1,"timers":2}],3:[function(require,module,exports){
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["VueGitHubCorners"] = factory();
+	else
+		root["VueGitHubCorners"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "https://github.com/gluons/vue-gh-corners/";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/* exports provided: default */
+/* all exports used */
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_GitHubCorners_vue__ = __webpack_require__(/*! @/components/GitHubCorners.vue */ 3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_GitHubCorners_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_GitHubCorners_vue__);
+
+
+function install(Vue) {
+	Vue.component('github-corners', __WEBPACK_IMPORTED_MODULE_0__components_GitHubCorners_vue___default.a);
+}
+
+if (typeof window !== 'undefined' && window.Vue) {
+	install(window.Vue);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	install: install
+});
+
+/***/ }),
+/* 1 */
+/* exports provided: default */
+/* all exports used */
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader/lib?{"cacheDirectory":true,"babelrc":false,"presets":[["/home/illuminator/my-projects/vue-gh-corners/~/babel-preset-vue-app/dist/index.common.js",{"useBuiltIns":true}]]}!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/GitHubCorners.vue ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var GITHUB_BASE_URL = 'https://github.com';
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	name: 'github-corners',
+	props: {
+		repo: {
+			type: String,
+			required: true
+		},
+		blank: {
+			type: Boolean,
+			default: true
+		},
+		bgColor: {
+			type: String,
+			default: '#151513'
+		},
+		color: {
+			type: String,
+			default: '#fff'
+		},
+		position: {
+			type: String,
+			default: 'right',
+			validator: function validator(value) {
+				return value === 'left' || value === 'right';
+			}
+		}
+	},
+	computed: {
+		url: function url() {
+			return GITHUB_BASE_URL + '/' + this.repo;
+		},
+		svgStyle: function svgStyle() {
+			var positionStyles = {};
+			if (this.position === 'left') {
+				positionStyles = {
+					'left': 0,
+					'transform': 'scale(-1, 1)'
+				};
+			} else {
+				positionStyles = {
+					'right': 0
+				};
+			}
+
+			return Object.assign({
+				'fill': this.bgColor,
+				'color': this.color,
+				'position': 'absolute',
+				'border': 0,
+				'top': 0
+			}, positionStyles);
+		},
+		blankAttr: function blankAttr() {
+			return this.blank ? '_blank' : null;
+		},
+		relAttr: function relAttr() {
+			return this.blank ? 'noopener noreferrer' : null;
+		}
+	}
+});
+
+/***/ }),
+/* 2 */
+/* no static exports found */
+/* all exports used */
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./~/extract-text-webpack-plugin/loader.js?{"omit":1,"remove":true}!./~/vue-style-loader!./~/css-loader?{"autoprefixer":false,"sourceMap":true,"minimize":false}!./~/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-944537b6","scoped":false,"hasInlineConfig":true}!./~/vue-loader/lib/selector.js?type=styles&index=0!./src/components/GitHubCorners.vue ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */
+/* no static exports found */
+/* exports used: default */
+/*!******************************************!*\
+  !*** ./src/components/GitHubCorners.vue ***!
+  \******************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(/*! !../../~/extract-text-webpack-plugin/loader.js?{"omit":1,"remove":true}!vue-style-loader!css-loader?{"autoprefixer":false,"sourceMap":true,"minimize":false}!../../~/vue-loader/lib/style-compiler/index?{"vue":true,"id":"data-v-944537b6","scoped":false,"hasInlineConfig":true}!../../~/vue-loader/lib/selector?type=styles&index=0!./GitHubCorners.vue */ 2)
+}
+var Component = __webpack_require__(/*! ../../~/vue-loader/lib/component-normalizer */ 4)(
+  /* script */
+  __webpack_require__(/*! !babel-loader?{"cacheDirectory":true,"babelrc":false,"presets":[["/home/illuminator/my-projects/vue-gh-corners/~/babel-preset-vue-app/dist/index.common.js",{"useBuiltIns":true}]]}!../../~/vue-loader/lib/selector?type=script&index=0!./GitHubCorners.vue */ 1),
+  /* template */
+  __webpack_require__(/*! !../../~/vue-loader/lib/template-compiler/index?{"id":"data-v-944537b6"}!../../~/vue-loader/lib/selector?type=template&index=0!./GitHubCorners.vue */ 5),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/home/illuminator/my-projects/vue-gh-corners/src/components/GitHubCorners.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] GitHubCorners.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-944537b6", Component.options)
+  } else {
+    hotAPI.reload("data-v-944537b6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 4 */
+/* no static exports found */
+/* all exports used */
+/*!**************************************************!*\
+  !*** ./~/vue-loader/lib/component-normalizer.js ***!
+  \**************************************************/
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 5 */
+/* no static exports found */
+/* all exports used */
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./~/vue-loader/lib/template-compiler?{"id":"data-v-944537b6"}!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/GitHubCorners.vue ***!
+  \*************************************************************************************************************************************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    staticClass: "github-corner",
+    attrs: {
+      "href": _vm.url,
+      "target": _vm.blankAttr,
+      "rel": _vm.relAttr,
+      "aria-label": "View source on GitHub"
+    }
+  }, [_c('svg', {
+    style: (_vm.svgStyle),
+    attrs: {
+      "width": "80",
+      "height": "80",
+      "viewBox": "0 0 250 250",
+      "aria-hidden": "true"
+    }
+  }, [_c('path', {
+    attrs: {
+      "d": "M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"
+    }
+  }), _vm._v(" "), _c('path', {
+    staticClass: "octo-arm",
+    staticStyle: {
+      "transform-origin": "130px 106px"
+    },
+    attrs: {
+      "d": "M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2",
+      "fill": "currentColor"
+    }
+  }), _vm._v(" "), _c('path', {
+    staticClass: "octo-body",
+    attrs: {
+      "d": "M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z",
+      "fill": "currentColor"
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-944537b6", module.exports)
+  }
+}
+
+/***/ }),
+/* 6 */
+/* no static exports found */
+/* all exports used */
+/*!****************************!*\
+  !*** multi ./src/index.js ***!
+  \****************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /home/illuminator/my-projects/vue-gh-corners/src/index.js */0);
+
+
+/***/ })
+/******/ ]);
+});
+
+},{"vue":6,"vue-hot-reload-api":4}],4:[function(require,module,exports){
 var Vue // late bind
 var version
 var map = (window.__VUE_HOT_MAP__ = Object.create(null))
@@ -505,7 +930,7 @@ exports.reload = tryWrap(function (id, options) {
   })
 })
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 (function (global,setImmediate){
 /*!
  * Vue.js v2.5.17
@@ -10395,7 +10820,7 @@ exports.reload = tryWrap(function (id, options) {
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
-},{"timers":2}],5:[function(require,module,exports){
+},{"timers":2}],6:[function(require,module,exports){
 (function (process,global,setImmediate){
 /*!
  * Vue.js v2.5.17
@@ -18433,7 +18858,7 @@ if (inBrowser) {
 module.exports = Vue;
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
-},{"_process":1,"timers":2}],6:[function(require,module,exports){
+},{"_process":1,"timers":2}],7:[function(require,module,exports){
 var inserted = exports.cache = {}
 
 function noop () {}
@@ -18458,7 +18883,7 @@ exports.insert = function (css) {
   }
 }
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -18470,7 +18895,13 @@ var _index = require('./index.vue');
 
 var _index2 = _interopRequireDefault(_index);
 
+var _vueGhCorners = require('vue-gh-corners');
+
+var _vueGhCorners2 = _interopRequireDefault(_vueGhCorners);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vueGhCorners2.default);
 
 new _vue2.default({
   components: {
@@ -18521,13 +18952,13 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-579e625a", __vue__options__)
   }
 })()}
-},{"../node_modules/vue/dist/vue.js":4,"./index.vue":8,"vue":5,"vue-hot-reload-api":3}],8:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".mask {\n  top:0; \n  left:0; \n  width:100%; \n  height:100%; \n  position:fixed; \n  background-color:rgba(0, 0, 0, 0.5); \n}\n\n.dialog {\n  position:absolute; \n}")
+},{"../node_modules/vue/dist/vue.js":5,"./index.vue":9,"vue":6,"vue-gh-corners":3,"vue-hot-reload-api":4}],9:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".over_body_mask {\n  top:0; \n  left:0; \n  width:100%; \n  height:100%; \n  position:fixed; \n  background-color:rgba(0, 0, 0, 0.5); \n}\n\n.over_body_dialog {\n  position:absolute; \n}")
 ;(function(){
 'use strict';
 
 module.exports = {
-  name: 'vue-up',
+  name: 'vue-over-body',
   props: {
     open: {
       type: Number,
@@ -18564,10 +18995,10 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mask",style:({
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"over_body_mask",style:({
     'z-index': _vm.open,
     'display': _vm.show ? 'block' : 'none'
-  }),on:{"click":_vm.close}},[_c('div',{class:['dialog', _vm.dialogClass],style:({'z-index': _vm.open + 1}),on:{"click":function($event){$event.stopPropagation();}}},[_vm._t("default")],2)])}
+  }),on:{"click":_vm.close}},[_c('div',{class:['over_body_dialog', _vm.dialogClass],style:({'z-index': _vm.open + 1}),on:{"click":function($event){$event.stopPropagation();}}},[_vm._t("default")],2)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18580,4 +19011,4 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-c207676a", __vue__options__)
   }
 })()}
-},{"vue":5,"vue-hot-reload-api":3,"vueify/lib/insert-css":6}]},{},[7]);
+},{"vue":6,"vue-hot-reload-api":4,"vueify/lib/insert-css":7}]},{},[8]);
