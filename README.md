@@ -2,16 +2,16 @@
 Create modals, sidebars, notifications, pop ups! 
 CSS framework agnostic!
 
-### Demo
+## Demo
 [Live Demo](http://marcodpt.github.io/vue-over-body)
 in this demo was used bulma css framework
 
-### Install
+## Install
 ```
 npm install --save vue-over-body
 ```
 
-### Usage
+## Usage
 ```javascript
   import Vue from 'vue'
   import overBody from 'vue-over-body'
@@ -22,7 +22,7 @@ npm install --save vue-over-body
     },
     data: function () {
       return {
-        open: 0,
+        open: 1,
         dialogClass: 'sampleNotification'
       }
     }
@@ -48,12 +48,22 @@ npm install --save vue-over-body
   }
 ```
 
-### Contribute
+###Props
+ - open
+   - type: Number
+   - default: 0
+   - description: 0 means hide, other number means z-index of the component
+ - dialogClass
+   - type: String
+   - default: ""
+   - description: css class aplied to slot parent
+
+## Contribute
 We need help! Our goals are:
  - CSS Transitions
  - Add tests
  - More usage examples and better home page
  - Add support to most browsers
 
-What is outside of the scope of this project
+What is outside of the scope of this project:
  - Create any kind of layout like buttons, headers, pre build alerts!
