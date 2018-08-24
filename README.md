@@ -28,7 +28,7 @@ npm install --save vue-over-body
 ```
 
 ```html
-  <vue-over-body :open="open" before="before" after="after">
+  <vue-over-body :open="open" before="before" after="after" :transition="0.3">
     <div>
       <button @click="open = 0">&times;</button>
       <p>A little alert message!</p> 
@@ -46,9 +46,13 @@ npm install --save vue-over-body
   }
 
   .after {
-    right: 0;
+    right: 50px;
   }
 ```
+Let me explain the example  
+The position of the slot div is absolute  
+so class .before have width:300px and make element outside the screen  
+it will transition in 0.3s for the class .after that put element in the screen
 
 ### Props
  - open
