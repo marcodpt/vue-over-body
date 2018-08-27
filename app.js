@@ -18926,7 +18926,8 @@ new _vue2.default({
       index: 1,
       modal: 0,
       sidebar: 0,
-      notification: 0
+      notification: 0,
+      dim: true
     };
   }
 }).$mount('#app');
@@ -18944,7 +18945,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"../node_modules/vue/dist/vue.js":5,"./index.vue":9,"vue":6,"vue-gh-corners":3,"vue-hot-reload-api":4}],9:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".over_body_mask {\n  top:0; \n  left:0; \n  width:100%; \n  height:100%; \n  position:fixed; \n}\n\n.over_body_mask_after {\n  background-color:rgba(0, 0, 0, 0.5); \n}\n\n.over_body_dialog {\n  position:absolute; \n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".over_body_mask {\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  position:fixed; \n  overflow-x: hidden;\n  overflow-y: auto;\n}\n\n.over_body_mask_after {\n  background-color:rgba(0, 0, 0, 0.5); \n}\n\n.over_body_dialog {\n  position:relative; \n}")
 ;(function(){
 'use strict';
 
@@ -18959,6 +18960,12 @@ module.exports = {
       type: Number,
       default: 0.3
     },
+    dialogStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
     before: {
       type: String,
       default: ''
@@ -18966,6 +18973,10 @@ module.exports = {
     after: {
       type: String,
       default: ''
+    },
+    dim: {
+      type: Boolean,
+      default: true
     }
   },
   data: function data() {
@@ -19001,6 +19012,19 @@ module.exports = {
           return _this.$data.start = false;
         }, this.transition * 1000 + t);
       }
+    },
+    setStyle: function setStyle(obj) {
+      if (obj == null) {
+        obj = {};
+      }
+
+      obj['z-index'] = this.open;
+      obj['-webkit-transition'] = 'all ' + this.transition + 's';
+      obj['-moz-transition'] = 'all ' + this.transition + 's';
+      obj['-o-transition'] = 'all ' + this.transition + 's';
+      obj['transition'] = 'all ' + this.transition + 's';
+
+      return obj;
     }
   }
 };
@@ -19008,19 +19032,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.start)?_c('div',{class:['over_body_mask', _vm.finish ? 'over_body_mask_after' : ''],style:({
-    'z-index': _vm.open,
-    '-webkit-transition': 'all ' + _vm.transition + 's',
-    '-moz-transition': 'all ' + _vm.transition + 's',
-    '-o-transition': 'all ' + _vm.transition + 's',
-    'transition': 'all ' + _vm.transition + 's'
-  }),on:{"click":_vm.close}},[_c('div',{class:['over_body_dialog', _vm.before, _vm.finish ? _vm.after : ''],style:({
-      'z-index': _vm.open + 1,
-      '-webkit-transition': 'all ' + _vm.transition + 's',
-      '-moz-transition': 'all ' + _vm.transition + 's',
-      '-o-transition': 'all ' + _vm.transition + 's',
-      'transition': 'all ' + _vm.transition + 's'
-    }),on:{"click":function($event){$event.stopPropagation();}}},[_vm._t("default")],2)]):_vm._e()}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.start)?_c('div',{class:['over_body_mask', _vm.finish && _vm.dim ? 'over_body_mask_after' : ''],style:(_vm.setStyle()),on:{"click":_vm.close}},[_c('div',{class:['over_body_dialog', _vm.before, _vm.finish ? _vm.after : ''],style:(_vm.setStyle(_vm.dialogStyle)),on:{"click":function($event){$event.stopPropagation();}}},[_vm._t("default")],2)]):_vm._e()}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

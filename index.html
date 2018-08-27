@@ -21,11 +21,11 @@
           <h2 class="subtitle">
             Create modals, sidebars, notifications, pop ups with css transitions!
           </h2>
-          <button class="button is-info" @click="showModal">
-            Show Modal
-          </button>
           <button class="button is-primary" @click="showSidebar">
             Show Sidebar
+          </button>
+          <button class="button is-info" @click="showModal">
+            Show Modal
           </button>
           <button class="button is-warning" @click="showNotification">
             Show Notication
@@ -33,7 +33,7 @@
         </div>
       </div>
     </section>
-    <vue-over-body :open="modal" before="modalBefore modal-card" after="modalAfter">
+    <vue-over-body :dim="dim" :open="modal" before="modalBefore modal-card" after="modalAfter">
       <header class="modal-card-head">
         <p class="modal-card-title">Modal title</p>
         <button class="delete" @click="modal = 0"></button>
@@ -51,8 +51,8 @@
         <button class="button">Cancel</button>
       </footer>
     </vue-over-body>
-    <vue-over-body :open="sidebar" before="sideBefore" after="sideAfter">
-      <aside class="menu" style="margin:10px">
+    <vue-over-body :dim="dim" :open="sidebar" before="sideBefore" after="sideAfter">
+      <aside class="menu" style="padding:10px;background-color:#f8f8f8;">
         <p class="menu-label">
           General
         </p>
@@ -87,7 +87,7 @@
         </ul>
       </aside>
     </vue-over-body>
-    <vue-over-body :open="notification" before="notificationBefore" after="notificationAfter">
+    <vue-over-body :dim="false" :open="notification" before="notificationBefore" after="notificationAfter">
       <div class="notification is-warning">
         <button class="delete" @click="notification = 0"></button>
         <p>A little alert message!</p> 
@@ -114,7 +114,6 @@
       width: 300px;
       top: 0;
       left: -300px;
-      background-color:#f8f8f8;
     }
 
     .sideAfter {
@@ -125,6 +124,7 @@
       top: 50px;
       width: 300px;
       right: -300px;
+      position: absolute;
     }
 
     .notificationAfter {

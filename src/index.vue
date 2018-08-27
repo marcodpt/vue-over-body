@@ -10,6 +10,10 @@
         type: Number,
         default: 0.3
       },
+      dialogStyle: {
+        type: Object,
+        default: () => ({})
+      },
       before: {
         type: String,
         default: ''
@@ -17,6 +21,10 @@
       after: {
         type: String,
         default: ''
+      },
+      dim: {
+        type: Boolean,
+        default: true
       }
     },
     data: function () {
@@ -46,6 +54,19 @@
           this.$data.finish = false
           setTimeout(() => this.$data.start = false, this.transition * 1000 + t)
         }
+      },
+      setStyle: function (obj) {
+        if (obj == null) {
+          obj = {}
+        }
+
+        obj['z-index'] = this.open
+        obj['-webkit-transition'] = 'all ' + this.transition + 's'
+        obj['-moz-transition'] = 'all ' + this.transition + 's'
+        obj['-o-transition'] = 'all ' + this.transition + 's'
+        obj['transition'] = 'all ' + this.transition + 's'
+
+        return obj
       }
     }
   }
@@ -54,25 +75,13 @@
 <template>
   <div
     v-if="start"
-    :class="['over_body_mask', finish ? 'over_body_mask_after' : '']"
+    :class="['over_body_mask', finish && dim ? 'over_body_mask_after' : '']"
     @click="close"
-    :style="{
-      'z-index': open,
-      '-webkit-transition': 'all ' + transition + 's',
-      '-moz-transition': 'all ' + transition + 's',
-      '-o-transition': 'all ' + transition + 's',
-      'transition': 'all ' + transition + 's'
-    }"
+    :style="setStyle()"
   >
     <div
       @click.stop
-      :style="{
-        'z-index': open + 1,
-        '-webkit-transition': 'all ' + transition + 's',
-        '-moz-transition': 'all ' + transition + 's',
-        '-o-transition': 'all ' + transition + 's',
-        'transition': 'all ' + transition + 's'
-      }"
+      :style="setStyle(dialogStyle)"
       :class="['over_body_dialog', before, finish ? after : '']"
     >
       <slot></slot>
@@ -82,11 +91,13 @@
 
 <style>
   .over_body_mask {
-    top:0; 
-    left:0; 
-    width:100%; 
-    height:100%; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     position:fixed; 
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .over_body_mask_after {
@@ -94,6 +105,6 @@
   }
 
   .over_body_dialog {
-    position:absolute; 
+    position:relative; 
   }
 </style>

@@ -28,7 +28,8 @@
         index: 1,
         modal: 0,
         sidebar: 0,
-        notification: 0
+        notification: 0,
+        dim: true
       }
     }
   }).$mount('#app')
