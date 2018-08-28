@@ -48,11 +48,15 @@
       toogle: function (open) {
         var t = 50
         if (open) {
+          document.body.className += ' over_body_open'
           this.$data.start = true
           setTimeout(() => this.$data.finish = true, t)
         } else {
           this.$data.finish = false
-          setTimeout(() => this.$data.start = false, this.transition * 1000 + t)
+          setTimeout(() => {
+            this.$data.start = false
+            document.body.className = document.body.className.replace(" over_body_open","");
+          }, this.transition * 1000 + t)
         }
       },
       setStyle: function (obj) {
@@ -90,6 +94,10 @@
 </template>
 
 <style>
+  .over_body_open {
+    overflow: hidden;
+  }
+
   .over_body_mask {
     top: 0;
     right: 0;

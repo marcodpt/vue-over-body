@@ -18945,7 +18945,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"../node_modules/vue/dist/vue.js":5,"./index.vue":9,"vue":6,"vue-gh-corners":3,"vue-hot-reload-api":4}],9:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".over_body_mask {\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  position:fixed; \n  overflow-x: hidden;\n  overflow-y: auto;\n}\n\n.over_body_mask_after {\n  background-color:rgba(0, 0, 0, 0.5); \n}\n\n.over_body_dialog {\n  position:relative; \n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".over_body_open {\n  overflow: hidden;\n}\n\n.over_body_mask {\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  position:fixed; \n  overflow-x: hidden;\n  overflow-y: auto;\n}\n\n.over_body_mask_after {\n  background-color:rgba(0, 0, 0, 0.5); \n}\n\n.over_body_dialog {\n  position:relative; \n}")
 ;(function(){
 'use strict';
 
@@ -19002,6 +19002,7 @@ module.exports = {
 
       var t = 50;
       if (open) {
+        document.body.className += ' over_body_open';
         this.$data.start = true;
         setTimeout(function () {
           return _this.$data.finish = true;
@@ -19009,7 +19010,8 @@ module.exports = {
       } else {
         this.$data.finish = false;
         setTimeout(function () {
-          return _this.$data.start = false;
+          _this.$data.start = false;
+          document.body.className = document.body.className.replace(" over_body_open", "");
         }, this.transition * 1000 + t);
       }
     },

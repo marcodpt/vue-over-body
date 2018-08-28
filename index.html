@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="overflow-y:auto;">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -33,23 +33,25 @@
         </div>
       </div>
     </section>
-    <vue-over-body :dim="dim" :open="modal" before="modalBefore modal-card" after="modalAfter">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Modal title</p>
-        <button class="delete" @click="modal = 0"></button>
-      </header>
-      <section class="modal-card-body">
-        <p class="title">
-          “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
-        </p>
-        <p class="subtitle">
-          Jeff Atwood
-        </p>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button is-success">Save changes</button>
-        <button class="button">Cancel</button>
-      </footer>
+    <vue-over-body :dim="dim" :open="modal" before="modalBefore" after="modalAfter">
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Modal title</p>
+          <button class="delete" @click="modal = 0"></button>
+        </header>
+        <section class="modal-card-body">
+          <p class="title">
+            “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+          </p>
+          <p class="subtitle">
+            Jeff Atwood
+          </p>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Save changes</button>
+          <button class="button">Cancel</button>
+        </footer>
+      </div>
     </vue-over-body>
     <vue-over-body :dim="dim" :open="sidebar" before="sideBefore" after="sideAfter">
       <div style="padding:10px;background-color:#f8f8f8;min-height:100%">
