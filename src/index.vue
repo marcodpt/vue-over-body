@@ -34,7 +34,9 @@
       }
     },
     mounted: function () {
-      this.toogle(this.open)
+      if (this.open) {
+        this.toogle(this.open)
+      }
     },
     watch: {
       open: function () {
