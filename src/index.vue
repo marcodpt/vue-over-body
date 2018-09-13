@@ -49,15 +49,16 @@
       },
       toogle: function (open) {
         var t = 50
+        var cls = ' over_body_open'
         if (open) {
-          document.body.className += ' over_body_open'
+          document.body.className += cls
           this.$data.start = true
           setTimeout(() => this.$data.finish = true, t)
         } else {
           this.$data.finish = false
           setTimeout(() => {
             this.$data.start = false
-            document.body.className = document.body.className.replace(" over_body_open","");
+            document.body.className = document.body.className.split(cls).join('')
           }, this.transition * 1000 + t)
         }
       },

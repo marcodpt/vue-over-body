@@ -25,7 +25,7 @@
   "scripts": {
     "cp_bulma": "cp node_modules/bulma/css/bulma.min.css static/",
     "cp_ghcorners": "cp node_modules/vue-gh-corners/dist/vue-github-corners.min.css static/",
-    "server": "npm run cp_bulma && npm run cp_ghcorners && http-server -a localhost -p 8080",
+    "server": "mkdir -p static && npm run cp_bulma && npm run cp_ghcorners && http-server -a localhost -p 8080",
     "build": "browserify -e src/app.vue -o app.js"
   },
   "dependencies": {},
