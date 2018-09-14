@@ -30,12 +30,15 @@
     data: function () {
       return {
         start: false,
-        finish: false
+        finish: false,
+        cls: ' over_body_open'
       }
     },
     mounted: function () {
       if (this.open) {
         this.toogle(this.open)
+      } else {
+        this.clear()
       }
     },
     watch: {
@@ -49,18 +52,20 @@
       },
       toogle: function (open) {
         var t = 50
-        var cls = ' over_body_open'
         if (open) {
-          document.body.className += cls
+          document.body.className += this.$data.cls
           this.$data.start = true
           setTimeout(() => this.$data.finish = true, t)
         } else {
           this.$data.finish = false
           setTimeout(() => {
             this.$data.start = false
-            document.body.className = document.body.className.split(cls).join('')
+            this.clear()
           }, this.transition * 1000 + t)
         }
+      },
+      clear: function () {
+        document.body.className = document.body.className.split(this.$data.cls).join('')
       },
       setStyle: function (obj) {
         if (obj == null) {

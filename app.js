@@ -18982,12 +18982,15 @@ module.exports = {
   data: function data() {
     return {
       start: false,
-      finish: false
+      finish: false,
+      cls: ' over_body_open'
     };
   },
   mounted: function mounted() {
     if (this.open) {
       this.toogle(this.open);
+    } else {
+      this.clear();
     }
   },
   watch: {
@@ -19003,9 +19006,8 @@ module.exports = {
       var _this = this;
 
       var t = 50;
-      var cls = ' over_body_open';
       if (open) {
-        document.body.className += cls;
+        document.body.className += this.$data.cls;
         this.$data.start = true;
         setTimeout(function () {
           return _this.$data.finish = true;
@@ -19014,9 +19016,12 @@ module.exports = {
         this.$data.finish = false;
         setTimeout(function () {
           _this.$data.start = false;
-          document.body.className = document.body.className.split(cls).join('');
+          _this.clear();
         }, this.transition * 1000 + t);
       }
+    },
+    clear: function clear() {
+      document.body.className = document.body.className.split(this.$data.cls).join('');
     },
     setStyle: function setStyle(obj) {
       if (obj == null) {
