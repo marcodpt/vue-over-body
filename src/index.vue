@@ -1,5 +1,5 @@
 <script type="text/babel">
-  module.exports = {
+  export default {
     name: 'vue-over-body',
     props: {
       open: {
